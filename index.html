@@ -20,14 +20,14 @@
                 <input type="text" id="city-search" class="rounded bg-gray-200">
                 </div>
                 <button id="search-button" size=10 class="mb-2 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Search</button>
-                <div class="w-52 flex-initial bg-green-200">
+                <div id="saved-cities" class="w-52 flex-initial bg-green-200">
                     Container1.5
                 </div>
             </div>
 
 
 
-            <div class=" flex-0 bg-yellow-100">
+            <div class=" flex-0 bg-blue-100">
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 py-18 mx-auto">
                           <h1 id="city-name" class="sm:text-3xl text-2xl font-medium title-font mb-0 text-gray-900">Please search by city to get current weather</h1>
@@ -35,6 +35,7 @@
                         <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
                           <!-- <div class="h-1 w-20 bg-indigo-500 rounded"></div> -->
                         </div>
+                        <img id="current-icon" alt="Picture of current weather icon">
                         <p id="current-temp" class="lg:w-1/2 w-full leading-relaxed text-gray-500">Temp: </p>
                         <p id="current-wind" class="lg:w-1/2 w-full leading-relaxed text-gray-500">Wind: </p>
                         <p id="current-humidity" class="lg:w-1/2 w-full leading-relaxed text-gray-500">Humidity: </p>
@@ -43,47 +44,48 @@
                             <h3 class="tracking-widest text-indigo-500 text-s font-medium title-font">5 day forecast</h3>
                       <div class="flex flex-initial -m-2">
                         <div class="xl:w-1/4 md:w-1/2 p-4">
-                          <div class="bg-gray-100 p-4 rounded-lg">
-                            <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
-                            <p id="day0"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
-                            <p id="day0" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
-                            <p id="day0" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
+                          <div class="bg-blue-200 p-4 rounded-lg">
+                            <span id="day1">Date</span>
+                            <img id="icon1" class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
+                            <p id="temp1"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
+                            <p id="wind1" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
+                            <p id="humidity1" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
                           </div>
                         </div>
                         <div class="xl:w-1/4 md:w-1/2 p-4">
-                          <div class="bg-gray-100 p-4 rounded-lg">
-                            <span>Date</span>
-                            <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/721x401" alt="content">
-                            <p id="day1"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
-                            <p id="day1" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
-                            <span id="day1" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</span>
+                          <div class="bg-blue-200 p-4 rounded-lg">
+                            <span id="day2">Date</span>
+                            <img id="icon2" class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/721x401" alt="content">
+                            <p id="temp2"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
+                            <p id="wind2" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
+                            <p id="humidity2" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
                           </div>
                         </div>
                         <div class="xl:w-1/4 md:w-1/2 p-4">
-                          <div class="bg-gray-100 p-4 rounded-lg">
-                            <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content">
-                            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-                            <p id="day2"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
-                            <p id="day2" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
-                            <p id="day2" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
+                          <div class="bg-blue-200 p-4 rounded-lg">
+                            <span id="day3">Date</span>
+                            <img id="icon3" class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content">
+                            <p id="temp3"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
+                            <p id="wind3" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
+                            <p id="humidity3" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
                           </div>
                         </div>
                         <div class="xl:w-1/4 md:w-1/2 p-4">
-                          <div class="bg-gray-100 p-4 rounded-lg">
-                            <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content">
-                            <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-                            <p id="day3"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
-                            <p id="day3" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
-                            <p id="day3" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
+                          <div class="bg-blue-200 p-4 rounded-lg">
+                            <span id="day4">Date</span>
+                            <img id="icon4" class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content">
+                            <p id="temp4"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
+                            <p id="wind4" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
+                            <p id="humidity4" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
                           </div>
                         </div>
                         <div class="xl:w-1/4 md:w-1/2 p-4">
-                            <div class="bg-gray-100 p-4 rounded-lg">
-                              <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content">
-                              <h3 class="tracking-widest text-indigo-500 text-xs font-medium title-font">SUBTITLE</h3>
-                            <p id="day4"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
-                            <p id="day4" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
-                            <p id="day4" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
+                            <div class="bg-blue-200 p-4 rounded-lg">
+                            <span id="day5">Date</span>
+                              <img id="icon5" class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content">
+                            <p id="temp5"class="text-lg text-gray-900 font-medium title-font mb-4">Temp:</p>
+                            <p id="wind5" class="text-lg text-gray-900 font-medium title-font mb-4">Wind:</p>
+                            <p id="humidity5" class="text-lg text-gray-900 font-medium title-font mb-4">Humidity:</p>
                             </div>
                           </div>
                       </div>
