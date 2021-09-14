@@ -10,30 +10,28 @@
 <body>
     
         <!--  <div class="container px-5 mx-auto"> -->
-            <h1 class="h-24 bg-gradient-to-r from-blue-600 to-blue-300 sm:text-3xl text-2xl text-white font-medium title-font text-center  mb-5">Daily Weather Dashboard
+            <h1 class="h-24 bg-gradient-to-r from-blue-600 to-blue-300 sm:text-3xl text-2xl text-white font-medium title-font text-center  mb-10">Daily Weather Dashboard
             </h1>
         </div>
-        <div class=" flex flex-row  justify-center mx-auto bg-gray-300"  id="weather-interface">
-            <div class="px-10 w-80 flex-initial bg-white">
+        <div class=" flex flex-row  justify-center mx-auto bg-blue-100"  id="weather-interface">
+            <div id="city-container" class="px-10 w-80 flex-initial bg-white">
                 <h2 class="text-2xl">Search for a city:</h2>
                 <div class="pb-5 pt-2">
                 <input type="text" id="city-search" class="rounded bg-gray-200">
                 </div>
-                <button id="search-button" size=10 class="mb-2 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Search</button>
-                <div id="saved-cities" class="w-52 flex-initial bg-green-200">
-                    Container1.5
+                <button id="search-button" size=10 class="mb-2 inline-flex text-white bg-blue-600 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg">Search</button>
+                <div id="saved-cities" class="w-52 flex-initial bg-gray-200">
                 </div>
+                  <button id="cities-clear" size=10 class="mt-2 inline-flex text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg" >Clear Cities</button>
             </div>
 
 
-
-            <div class=" flex-0 bg-blue-100">
+              <div id="main-interface" class=" flex-0 bg-blue-100">
                 <section class="text-gray-600 body-font">
                     <div class="container px-5 py-18 mx-auto">
                           <h1 id="city-name" class="sm:text-3xl text-2xl font-medium title-font mb-0 text-gray-900">Please search by city to get current weather</h1>
                       <div class="flex w-full flex-col sm:flex-row mb-20">
                         <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-                          <!-- <div class="h-1 w-20 bg-indigo-500 rounded"></div> -->
                         </div>
                         <img id="current-icon" alt="Picture of current weather icon">
                         <p id="current-temp" class="lg:w-1/2 w-full leading-relaxed text-gray-500">Temp: </p>
