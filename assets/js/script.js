@@ -2,23 +2,45 @@
 var now = dayjs();
 
 var searchButton = document.getElementById("search-button");
+var clearButton = document.getElementById("cities-clear");
 var appId = "b3f1aa24ac8904093849c6e0bd81b58f";
-var cityId = 0;
 const imageUrl = 'https://openweathermap.org';
 
-console.log(now.format('MM/DD/YYYY'));
-searchButton.addEventListener('click', function () {
-    cityId++;
-    const city = document.getElementById("city-search").value;
-    const currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${appId}`
-    const forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${appId}`
-    let cityNameEl = document.getElementById("city-name");
+document.getElementById("main-interface").style.visibility = "hidden";
+
+// Add the main search button event listener
+searchButton.addEventListener('click', function (e) {
+    console.log(e.target.textContent);
+    searchCity('input')
+    document.getElementById("main-interface").style.visibility = "visible";
+});
+
+clearButton.addEventListener('click', () => {localStorage.clear(); window.location.reload(true)});
+
+loadSavedCity();
+
+
+function searchCity(element,buttonText) {
     let todayDate = now.format('MM/DD/YYYY');
-    console.log(city);
-    cityNameEl.textContent = city.toUpperCase() + "(" + todayDate + ")";
-    getCurrWeather(currentWeather);
-    saveCity(cityId,city);
-} )
+
+    if (element === "button") {
+        const city = buttonText;
+        console.log(city);
+        let cityNameEl = document.getElementById("city-name");
+        cityNameEl.textContent = city.toUpperCase() + "(" + todayDate + ")";
+        const currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${appId}`
+        getCurrWeather(currentWeather);
+    }
+    else if (element === "input") {
+        const city = document.getElementById("city-search").value;
+        const currentWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${appId}`
+        let cityNameEl = document.getElementById("city-name");
+        cityNameEl.textContent = city.toUpperCase() + "(" + todayDate + ")";
+        getCurrWeather(currentWeather);
+        saveCity(city);
+        document.getElementById("main-interface").style.visibility = "visible";
+    }
+}
 
 async function getCurrWeather (url) {
     const response = await fetch(url);
@@ -98,18 +120,61 @@ function populateWeather(temp,wind,humidity) {
      humidityEl.textContent = "humidity: " + humidity;
 }
 
-function populateFiveDay (url) {
- console.log(url)
-}
 
 function displayHide () {
     
 } 
 
-function saveCity (cityId,cityName) {
+function loadSavedCity() {
+    //load all cities if any and create buttons
+    let cityCheck = localStorage.getItem('cities');
+    console.log(cityCheck);
+    if (!cityCheck) {return};
+    // Add event listener to container element
+    cityCheck = JSON.parse(cityCheck);
+    let cityContainer = document.getElementById("city-container");
+    let storedCities = JSON.parse(localStorage.getItem("cities"));
+    console.log(storedCities);
+    let cityButtonEl = document.getElementById('saved-cities');
+    for (let i=0; i<cityCheck.length;i++) {
+        let cityButton = document.createElement('button');
+        cityButton.setAttribute("class", "w-full mb-2 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg");
+        cityButton.textContent = cityCheck[i];
+        cityButtonEl.appendChild(cityButton);
+        cityButton.addEventListener('click', function (e){
+           let buttonText = e.target.textContent;
+           searchCity('button', buttonText);
+           document.getElementById("main-interface").style.visibility = "visible";
+        });
+    }
+    //localStorage.setItem(cityId,cityName);
+}
+
+function saveCity (cityName) {
     // save city name to local storage and generate button 
-    localStorage.setItem(cityId,cityName);
-    console.log(localStorage);
+    // check for cities key in local storage
+    let cityCheck = localStorage.getItem('cities')
+    if (cityCheck) {
+        console.log(cityCheck);
+        let storedCities = JSON.parse(localStorage.getItem("cities"));
+        storedCities.push(cityName);
+        localStorage.setItem("cities", JSON.stringify(storedCities));
+    }
+    else {
+        let cities = [];
+        cities.push(cityName);
+        localStorage.setItem("cities", JSON.stringify(cities));
+    }
+    let cityContainer = document.getElementById('saved-cities');
+    //localStorage.setItem(cityId,cityName);
+    let cityButton = document.createElement('button');
+    cityButton.setAttribute("class", "w-full mb-2 inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg");
+    cityButton.textContent = cityName;
+    cityContainer.appendChild(cityButton);
+    cityButton.addEventListener('click', function (e){
+       let buttonText = e.target.textContent;
+        searchCity('button', buttonText);
+    })
 }
 
 function clearCities () {
