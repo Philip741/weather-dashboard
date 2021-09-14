@@ -5,6 +5,7 @@ var searchButton = document.getElementById("search-button");
 var clearButton = document.getElementById("cities-clear");
 var appId = "b3f1aa24ac8904093849c6e0bd81b58f";
 const imageUrl = 'https://openweathermap.org';
+const helpTitle = document.getElementById("help-title");
 
 document.getElementById("main-interface").style.visibility = "hidden";
 
@@ -13,6 +14,7 @@ searchButton.addEventListener('click', function (e) {
     console.log(e.target.textContent);
     searchCity('input')
     document.getElementById("main-interface").style.visibility = "visible";
+    helpTitle.remove();
 });
 
 clearButton.addEventListener('click', () => {localStorage.clear(); window.location.reload(true)});
@@ -94,19 +96,19 @@ async function getUvIndex(lat,lon,appId) {
     uvIndex = parseInt(data.current.uvi);
     uvIndexEl.textContent = "UV index: " + uvIndex;
     if (uvIndex <= 2){
-        console.log('green');
+        uvIndexEl.setAttribute("class", "bg-green-300 rounded-md px-5");
     }
     else if (uvIndex >= 3 && uvIndex <=5) {
-        console.log('yellow');
+        uvIndexEl.setAttribute("class", "bg-yellow-300 rounded-md px-5");
     }
     else if (uvIndex === 6 || uvIndex === 7) {
-        console.log('orange');
+        uvIndexEl.setAttribute("class", "bg-orange-300 rounded-md px-5");
     }
     else if (uvIndex >=8 && uvIndex < 11) {
-        console.log('red');
+        uvIndexEl.setAttribute("class", "bg-red-300 rounded-md px-5");
     }
     else if (uvIndex > 10) {
-        console.log('purple')
+        uvIndexEl.setAttribute("class", "bg-purple-300 rounded-md px-5");
     }
 }
 
@@ -145,6 +147,7 @@ function loadSavedCity() {
            let buttonText = e.target.textContent;
            searchCity('button', buttonText);
            document.getElementById("main-interface").style.visibility = "visible";
+           helpTitle.remove();
         });
     }
     //localStorage.setItem(cityId,cityName);
@@ -175,10 +178,6 @@ function saveCity (cityName) {
        let buttonText = e.target.textContent;
         searchCity('button', buttonText);
     })
-}
-
-function clearCities () {
-    // clear cities from local storage
 }
 
 function displayIcons(url, iconId, icon, size) {
