@@ -17,7 +17,7 @@ This can be cloned using git and then run retaining the directory structure with
 <hr>
 
 ## Deployed Example
-<https://philipbrowning.github.io/dayplanner/>
+<https://philipbrowning.github.io/weather-dashboard/>
 <hr>
 
 
