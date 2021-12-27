@@ -1,6 +1,5 @@
 ## Description
-Basic application to schedule tasks throughout the day
-
+Application to display the Weather based on the location entered
 ## Frameworks used
 * Tailwindcss
 * day.js
